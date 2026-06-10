@@ -1,16 +1,30 @@
-## Sistema IMAP  
+# Sistema IMAP  
+
+![Estado del proyecto](https://img.shields.io/badge/Estado-en%20desarrollo-yellow)
+![MATLAB](https://img.shields.io/badge/MATLAB-App%20Designer-orange)
+![Python](https://img.shields.io/badge/Python-Procesamiento%20IA-blue)
+![GitHub issues](https://img.shields.io/github/issues/ArmandoCA08/Sistema-IMAP)
+![GitHub repo size](https://img.shields.io/github/repo-size/ArmandoCA08/Sistema-IMAP)
+![GitHub last commit](https://img.shields.io/github/last-commit/ArmandoCA08/Sistema-IMAP)
 
 ## Sistema Automatizado para la Identificación de Mecanismos de Atrapamiento en Perforación de Pozos
 
-![Interfaz principal del Sistema IMAP](Imágenes/interfaz_sistema_imap.png)
 
-**Sistema IMAP** es una aplicación desarrollada para apoyar la identificación y sistematización del mecanismo de atrapamiento en operaciones de perforación de pozos, a partir de la lectura de reportes de actividades provenientes de SIOP y de la aplicación de la **Hoja de identificación del mecanismo de atrapamiento**.
+![Interfaz principal del Sistema IMAP](Im%C3%A1genes/Captura%20de%20pantalla%20input%20sistema%20IMAP.png)
+
+**Sistema IMAP** es una aplicación desarrollada para apoyar la identificación y sistematización del mecanismo de atrapamiento en operaciones de perforación de pozos, a partir de la interpretación de reportes de actividades (SIOP) y de la aplicación de la **Hoja de identificación del mecanismo de atrapamiento** con múltiples usos entre ellos en las Investigaciones Causa-Raíz (ICR).
+
+---
+
+## Objetivo general
+
+Desarrollar un programa que, mediante la lectura de un archivo de reportes de actividades **(SIOP)**, identifique y sistematice la identificación del mecanismo de atrapamiento en las operaciones de perforación de pozos mediante la **Hoja de identificación del mecanismo de atrapamiento**.
 
 ---
 
 ## Descripción del proyecto
 
-El atrapamiento de la sarta de perforación es una de las problemáticas operativas más relevantes durante la perforación de pozos, ya que puede generar tiempos no productivos, incremento de costos, retrasos operativos y toma de decisiones bajo condiciones críticas.
+El atrapamiento de sarta de perforación es una de las problemáticas operativas más relevantes durante la perforación de pozos, ya que generan tiempos no productivos, incremento de costos, retrasos operativos y toma de decisiones bajo condiciones críticas.
 
 Este proyecto busca automatizar parte del proceso de análisis mediante una interfaz que permite:
 
@@ -25,21 +39,6 @@ Este proyecto busca automatizar parte del proceso de análisis mediante una inte
 
 ---
 
-## Objetivo general
-
-Desarrollar un programa que, mediante la lectura de un archivo de reportes de actividades **SIOP**, identifique y sistematice la identificación del mecanismo de atrapamiento en las operaciones de perforación de pozos mediante la **Hoja de identificación del mecanismo de atrapamiento**.
-
----
-
-## Problemática
-
-> “La problemática a resolver está asociada con la identificación del mecanismo de atrapamiento el cual se requiere sistematizar mediante una interfaz que permita definir el tipo de atrapamiento que se presenta en las operaciones de perforación de pozos.”  
->
-> **M. en C. José Adalberto Morquecho Robles**  
-> Especialista en Perforación y Geomecánica de pozos  
-> Grupo TANIS
-
----
 
 ## Fundamento técnico
 
@@ -58,11 +57,13 @@ Estas condiciones permiten asignar valores a tres posibles mecanismos principale
 
 El mecanismo con mayor puntuación en la hoja de identificación se considera el mecanismo más probable de atrapamiento.
 
+![Captura de pantalla output sistema IMAP](Im%C3%A1genes/Captura%20de%20pantalla%20output%20sistema%20IMAP.png)
+
 ---
 
 ## Hoja de identificación del mecanismo de atrapamiento
 
-![Hoja de identificación del mecanismo de atrapamiento](Imágenes/hoja_identificacion_mecanismo_atrapamiento.png)
+![Hoja de identificación del mecanismo de atrapamiento](Im%C3%A1genes/Hoja%20de%20identificaci%C3%B3n%20del%20mecanismo%20de%20atrapamiento.jpg)
 
 **Figura 1.** Hoja de identificación del mecanismo de atrapamiento.  
 Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Drilbert Engineering Inc.
@@ -70,6 +71,8 @@ Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Dr
 ---
 
 ## Arquitectura del sistema
+
+![Arquitectura del sistema](Im%C3%A1genes/Arquitectura%20del%20sismtema.jpg)
 
 El sistema está compuesto por dos partes principales:
 
@@ -91,14 +94,14 @@ Funciones principales de la interfaz:
 Archivo principal:
 
 ```text
-SistemaHIMAv1.mlapp / SistemaHIMAv1.m
+SistemaHIMA.mlapp
 ```
 
 > Nota: en este repositorio el código fuente exportado desde MATLAB App Designer puede encontrarse como archivo `.m` o como texto auxiliar, según la versión de trabajo.
 
 ### 2. Procesador en Python con IA
 
-El procesamiento automatizado se realiza mediante un script de Python que:
+El procesamiento automatizado se realiza mediante el modelo **Llama-3.1-nemotron-70b-instruct** con un script de Python que:
 
 - Lee el archivo Excel de actividades.
 - Convierte el contenido del Excel a texto ordenado.
@@ -118,58 +121,14 @@ El procesamiento automatizado se realiza mediante un script de Python que:
 Archivo principal:
 
 ```text
-Sistema_IMAP_ProcesadorAI_v1.py
+Sistema_IMAP_ProcesadorIA.py
 ```
 
 ---
 
 ## Flujo general de trabajo
 
-```mermaid
-flowchart TD
-    A[Inicio] --> B[Cargar archivo Excel SIOP]
-    B --> C[Seleccionar hoja del archivo]
-    C --> D[Seleccionar columnas relevantes]
-    D --> E[Filtrar por fecha del evento de atrapamiento]
-    E --> F[Descargar archivo filtrado]
-    F --> G[Ejecutar procesamiento con IA]
-    G --> H[Clasificar operaciones antes y después del atrapamiento]
-    H --> I[Llenar hoja de identificación]
-    I --> J[Calcular puntajes por mecanismo]
-    J --> K[Generar archivo Excel de salida]
-    K --> L[Visualizar resultado en la interfaz]
-```
-
----
-
-## Estructura recomendada del repositorio
-
-```text
-Sistema-IMAP/
-│
-├── README.md
-├── LICENSE
-├── .gitignore
-│
-├── matlab/
-│   └── SistemaHIMAv1.m
-│
-├── python/
-│   └── Sistema_IMAP_ProcesadorAI_v1.py
-│
-├── datos/
-│   └── ejemplo_siop.xlsx
-│
-├── salidas/
-│   ├── Archivo_Temporal_Ordenado.txt
-│   ├── Clasificacion_Atrapamiento.txt
-│   ├── Hoja_Identificacion_AI.txt
-│   └── Hoja_Identificacion_AI.xlsx
-│
-└── Imágenes/
-    ├── interfaz_sistema_imap.png
-    └── hoja_identificacion_mecanismo_atrapamiento.png
-```
+![Flujo general de trabajo](Im%C3%A1genes/Diagrama%20de%20flujo%20general%20del%20sistema.jpg)
 
 ---
 
@@ -223,6 +182,9 @@ client = OpenAI(
     api_key=os.getenv("NVIDIA_API_KEY")
 )
 ```
+
+Puede obtener una clave API Key desde: https://docs.api.nvidia.com/nim/reference/llm-apis
+
 ---
 
 ## Uso del sistema
@@ -329,22 +291,6 @@ Versión inicial del sistema:
 
 ---
 
-## Próximas actualizaciones
-
-Este repositorio seguirá actualizándose con mejoras como:
-
-- Normalización de rutas relativas para facilitar la ejecución en cualquier equipo.
-- Manejo seguro de claves API mediante variables de entorno.
-- Integración directa entre MATLAB y Python sin rutas absolutas.
-- Mejora en el manejo de errores.
-- Inclusión de archivos de ejemplo.
-- Validación automática de columnas mínimas requeridas.
-- Identificación automática del mecanismo con mayor puntuación.
-- Exportación de reportes finales.
-- Mejoras visuales en la interfaz.
-- Documentación técnica y manual de usuario.
-
----
 
 ## Créditos
 
@@ -364,4 +310,4 @@ Grupo TANIS | 2024
 
 ## Referencias
 
-Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Drilbert Engineering Inc.
+[Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Drilbert Engineering Inc.](Referencias/2001-Trouble-free%20drilling%2C%20John%20Mitchell-v1.pdf)
