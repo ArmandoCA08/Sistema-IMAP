@@ -310,4 +310,4 @@ Grupo TANIS | 2024
 
 ## Referencias
 
-[Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Drilbert Engineering Inc.](Referencias/2001-Trouble-free%20drilling%2C%20John%20Mitchell-v1.pdf)
+Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Drilbert Engineering Inc.
