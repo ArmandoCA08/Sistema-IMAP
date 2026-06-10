@@ -72,7 +72,7 @@ Mitchell, J. (2001). *Trouble-Free Drilling: Stuck Pipe Prevention* (Vol. 1). Dr
 
 ## Arquitectura del sistema
 
-![Arquitectura del sistema](Im%C3%A1genes/Arquitectura%20del%20sismetema.jpg)
+![Arquitectura del sistema](Im%C3%A1genes/Arquitectura%20del%20sistema.jpg)
 
 El sistema está compuesto por dos partes principales:
 
